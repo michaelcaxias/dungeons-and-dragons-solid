@@ -1,4 +1,4 @@
-import Race from './index';
+import Race from './Race';
 
 export default class Halfling extends Race {
   maxLifePoints = 60;

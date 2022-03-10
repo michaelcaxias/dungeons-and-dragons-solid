@@ -1,4 +1,4 @@
-import Race from './index';
+import Race from './Race';
 
 export default class Orc extends Race {
   maxLifePoints = 74;
