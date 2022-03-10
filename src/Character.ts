@@ -37,17 +37,31 @@ export default class Character implements Fighter {
       }
       return lifePoints;
     }
+    return lifePoints;
   }
 
-  // attack(enemy: Fighter): void {
-      
-  // }
+  attack(enemy: Fighter): number {
+    const { strength } = this;
+    enemy.receiveDamage(strength);
+    return enemy.lifePoints;
+  }
 
-  // levelUp(): void {
-      
-  // }
+  levelUp(): void {
+    let { maxLifePoints, strength, dexterity, defense } = this;
+    maxLifePoints += 1;
+    strength += 1;
+    dexterity += 1;
+    defense += 1;
+    console.log(`
+      Sua vida: ${maxLifePoints},
+      Força: ${strength}
+      Destresa: ${dexterity}
+      Defesa: ${defense}
+    `);
+  }
 
-  // special(): void {
-
-  // }
+  special(enemy: Fighter): void {
+    enemy.energy = { type_: 'mana', amount: 500 };
+    console.log(`Olá, ${this.race}, sua energia foi revigorada!`);
+  }
 } 
