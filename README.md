@@ -98,7 +98,7 @@ Para este projeto, você deverá aplicar os princípios da arquitetura `SOLID` e
 
 1. Clone o repositório
 
-- `git clone https://github.com/tryber/sd-014-b-project-s-and-dragons.git`.
+- `git clone https://github.com/tryber/sd-014-b-project-trybers-and-dragons.git`.
 - Entre na pasta do repositório que você acabou de clonar:
   - `cd sd-014-b-project-s-and-dragons`
 
@@ -559,7 +559,7 @@ Cada personagem será composto tanto por uma raça quanto por um arquétipo. Ess
 
 As dicas para completar essa *quest* são: 
 
-- O arquivo deve ser criado na raiz do diretório `src/` e se chamar `Fighter.ts`;
+- O arquivo deve ser criado na raiz do diretório `src/` e se chamar `Character.ts`;
 - A classe implementa a interface `Fighter`;
 - A classe `Character` deve ter os atributos privados: `race`, `archetype`, `maxLifePoints`, `lifePoints`, `strength`, `defense`, `dexterity` e `energy`, todos inicializados em seu **construtor**;
   - O atributo `race` deve ser do tipo `Race`;
