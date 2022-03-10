@@ -28,9 +28,16 @@ export default class Character implements Fighter {
     };
   }
 
-  // receiveDamage(attackPoints: number): void {
-
-  // }
+  receiveDamage(attackPoints: number) {
+    let { lifePoints } = this;
+    if (attackPoints > 0) {
+      lifePoints -= 1;
+      if (lifePoints <= 0) {
+        lifePoints = -1;
+      }
+      return lifePoints;
+    }
+  }
 
   // attack(enemy: Fighter): void {
       
