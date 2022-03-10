@@ -61,7 +61,8 @@ export default class Character implements Fighter {
   }
 
   special(enemy: Fighter): void {
-    enemy.energy = { type_: 'mana', amount: 500 };
-    console.log(`Olá, ${this.race}, sua energia foi revigorada!`);
+    const enemyFighter = enemy;
+    enemyFighter.energy = { type_: 'mana', amount: 500 };
+    console.log(`Olá, ${this.race.name}, sua energia foi revigorada!`);
   }
 } 
