@@ -7,20 +7,20 @@ import getRandomInt from './utils';
 export default class Character implements Fighter {
   readonly race: Race;
   readonly archetype: Archetype;
-  private maxLifePoints: number;
+  readonly maxLifePoints: number;
   readonly lifePoints: number;
   readonly strength: number;
   readonly defense: number;
   readonly dexterity: number;
   readonly energy: Energy;
 
-  constructor() {
-    this.race = new Elf('', 0);
-    this.archetype = new Mage('');
+  constructor(name: string) {
+    this.race = new Elf(name, 0);
+    this.archetype = new Mage(name);
     this.maxLifePoints = this.race.maxLifePoints / 2;
     this.lifePoints = this.race.maxLifePoints;
-    this.strength = 0;
-    this.defense = 0;
+    this.strength = getRandomInt(1, 10);
+    this.defense = getRandomInt(1, 10);
     this.dexterity = this.race.dexterity;
     this.energy = {
       type_: this.archetype.energyType,
@@ -29,15 +29,15 @@ export default class Character implements Fighter {
   }
 
   receiveDamage(attackPoints: number) {
-    let { lifePoints } = this;
-    if (attackPoints > 0) {
-      lifePoints -= 1;
-      if (lifePoints <= 0) {
-        lifePoints = -1;
+    const damage = Math.abs(this.defense - attackPoints);
+    if (damage > 0) {
+      this.defense -= attackPoints;
+      if (this.defense <= 0) {
+        this.defense = -1;
       }
-      return lifePoints;
+      return this.defense;
     }
-    return lifePoints;
+    return this.defense;
   }
 
   attack(enemy: Fighter): number {
@@ -61,8 +61,6 @@ export default class Character implements Fighter {
   }
 
   special(enemy: Fighter): void {
-    const enemyFighter = enemy;
-    enemyFighter.energy = { type_: 'mana', amount: 500 };
-    console.log(`Olá, ${this.race.name}, sua energia foi revigorada!`);
+    console.log(`${this.maxLifePoints} ${enemy}`);
   }
 } 
