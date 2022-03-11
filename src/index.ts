@@ -1,9 +1,7 @@
 import Character from './Character';
 import Monster from './Monster';
 import Dragon from './Dragon';
-import PVP from './Battle/PVP';
-import PVE from './Battle/PVE';
-import Battle from './Battle/Battle';
+import Battle, { PVP, PVE } from './Battle';
 
 const player1 = new Character('');
 
