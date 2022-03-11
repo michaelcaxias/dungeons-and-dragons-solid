@@ -5,39 +5,63 @@ import Energy from './Energy';
 import getRandomInt from './utils';
 
 export default class Character implements Fighter {
-  readonly race: Race;
-  readonly archetype: Archetype;
-  readonly maxLifePoints: number;
-  readonly lifePoints: number;
-  readonly strength: number;
-  readonly defense: number;
-  readonly dexterity: number;
-  readonly energy: Energy;
+  private _race: Race;
+  private _archetype: Archetype;
+  private _maxLifePoints: number;
+  private _lifePoints: number;
+  private _strength: number;
+  private _defense: number;
+  private _dexterity: number;
+  private _energy: Energy;
 
   constructor(name: string) {
-    this.race = new Elf(name, 0);
-    this.archetype = new Mage(name);
-    this.maxLifePoints = this.race.maxLifePoints / 2;
-    this.lifePoints = this.race.maxLifePoints;
-    this.strength = getRandomInt(1, 10);
-    this.defense = getRandomInt(1, 10);
-    this.dexterity = this.race.dexterity;
-    this.energy = {
-      type_: this.archetype.energyType,
+    this._race = new Elf(name, 0);
+    this._archetype = new Mage(name);
+    this._maxLifePoints = this._race.maxLifePoints / 2;
+    this._lifePoints = this._race.maxLifePoints;
+    this._strength = getRandomInt(1, 10);
+    this._defense = getRandomInt(1, 10);
+    this._dexterity = this._race.dexterity;
+    this._energy = {
+      type_: this._archetype.energyType,
       amount: getRandomInt(1, 10),
     };
   }
 
+  public get maxLifePoints() : number {
+    return this._maxLifePoints;
+  }
+
+  public get lifePoints() : number {
+    return this._lifePoints;
+  }
+
+  public get strength() : number {
+    return this._strength;
+  }
+
+  public get defense() : number {
+    return this._defense;
+  }
+
+  public get dexterity() : number {
+    return this._dexterity;
+  }
+
+  public get energy() : Energy {
+    return this._energy;
+  }
+
   receiveDamage(attackPoints: number) {
-    const damage = Math.abs(this.defense - attackPoints);
+    const damage = Math.abs(this._defense - attackPoints);
     if (damage > 0) {
-      this.defense -= attackPoints;
+      this._defense -= attackPoints;
       if (this.defense <= 0) {
-        this.defense = -1;
+        this._defense = -1;
       }
-      return this.defense;
+      return this._defense;
     }
-    return this.defense;
+    return this._defense;
   }
 
   attack(enemy: Fighter): number {
@@ -47,16 +71,15 @@ export default class Character implements Fighter {
   }
 
   levelUp(): void {
-    let { maxLifePoints, strength, dexterity, defense } = this;
-    maxLifePoints += 1;
-    strength += 1;
-    dexterity += 1;
-    defense += 1;
+    this._maxLifePoints += 1;
+    this._strength += 1;
+    this._dexterity += 1;
+    this._defense += 1;
     console.log(`
-      Sua vida: ${maxLifePoints},
-      Força: ${strength}
-      Destresa: ${dexterity}
-      Defesa: ${defense}
+      Sua vida: ${this._maxLifePoints},
+      Força: ${this._strength}
+      Destresa: ${this._dexterity}
+      Defesa: ${this._defense}
     `);
   }
 
