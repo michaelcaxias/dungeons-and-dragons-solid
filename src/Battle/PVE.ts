@@ -18,9 +18,12 @@ export default class PVE extends Battle {
 
   fight(): number {
     const player1LifePoints = this.firstCharacter.lifePoints;
-    // const eviroment = this.secondCharacter;
-    const eviromentLifePoints = this.secondCharacter[0].lifePoints;
-    // const eviromentLifePoints = Object.keys(eviroment).reduce((acc, curr) => acc + curr);
+    const eviroment: Environment[] = this.secondCharacter;
+    let eviromentLifePoints = 0;
+    if (this.secondCharacter.length > 0) {
+      eviromentLifePoints = eviroment
+        .reduce((acc, curr) => acc + curr.lifePoints, 0);
+    }
     if (player1LifePoints > eviromentLifePoints) return 1;
     if (eviromentLifePoints > player1LifePoints) return -1;
     return 0;
