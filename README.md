@@ -2,7 +2,7 @@
 
 Projeto feito utilizando os conhecimentos de Programação Orientada a Objetos, conceitos do SOLID e principalmente Typescript.
 
-## ⭐ História do Universo de Champions & Dragons
+## ⭐ História do Universo de Dungeons & Dragons
 
 <img src="https://i0.wp.com/cloud.estacaonerd.com/wp-content/uploads/2021/02/16195336/Dungeons-Dragons.jpg?fit=1280%2C720&ssl=1" alt="imagem de dungeons and dragons" width="600px" >
 
